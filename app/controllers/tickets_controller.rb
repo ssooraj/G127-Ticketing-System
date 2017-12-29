@@ -9,8 +9,13 @@ class TicketsController < ApplicationController
   end
 
   def create
-    ticket = Ticket.create(ticket_params)
-    redirect_to tickets_clients_path
+    @client = Client.find_by_email(cookies[:user_name])
+    ticket = @client.tickets.new(ticket_params)
+    if ticket.save
+      redirect_to tickets_clients_path
+    else
+      render 'new'
+    end
   end
 
   private
