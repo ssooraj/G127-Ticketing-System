@@ -1,0 +1,21 @@
+<%= link_to 'New Ticket', new_tickets_path, class: "btn btn-primary" %>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Subject</th>
+    <th scope="col">Status</th>
+    <th scope="col">Department</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @tickets.each do |ticket| %>
+    <tr>
+      <th scope="row"> <%= ticket.unique_id%> </th>
+      <td><%= ticket.subject%></td>
+      <td><%= ticket.status%></td>
+      <td><%= ticket.department%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -13,7 +13,7 @@ class ClientsController < ApplicationController
   end
 
   def tickets
-    pp @client.tickets
+    @tickets = @client.tickets
   end
 
   private
