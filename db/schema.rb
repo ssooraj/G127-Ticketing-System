@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171229062439) do
+ActiveRecord::Schema.define(version: 20171229083004) do
+
+  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "email"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "staffs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "user_name", default: "", null: false
@@ -27,6 +34,20 @@ ActiveRecord::Schema.define(version: 20171229062439) do
     t.datetime "updated_at", null: false
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
     t.index ["user_name"], name: "index_staffs_on_user_name", unique: true
+  end
+
+  create_table "tickets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "client_id"
+    t.bigint "staff_id"
+    t.string "unique_id"
+    t.string "subject"
+    t.string "description"
+    t.string "department"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_tickets_on_client_id"
+    t.index ["staff_id"], name: "index_tickets_on_staff_id"
   end
 
 end
