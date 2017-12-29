@@ -5,6 +5,7 @@
     <th scope="col">Subject</th>
     <th scope="col">Client</th>
     <th scope="col">Department</th>
+    <th scope="col">Action</th>
   </tr>
   </thead>
   <tbody>
@@ -14,6 +15,7 @@
       <td><%= ticket.subject%></td>
       <td><%= ticket.client_id%></td>
       <td><%= ticket.department%></td>
+      <td><%= link_to 'View Ticket', ticket_path(ticket), class: "btn btn-primary" %></td>
     </tr>
   <% end %>
   </tbody>

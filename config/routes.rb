@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resource :tickets do
     get :index
+    member do
+      get :show
+    end
   end
   resource :clients do
     get :tickets

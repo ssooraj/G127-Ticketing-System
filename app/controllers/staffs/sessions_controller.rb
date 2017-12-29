@@ -11,7 +11,7 @@ class Staffs::SessionsController < Devise::SessionsController
     staff = Staff.find_by_user_name(sign_in_params[:user_name].downcase)
     if  staff && staff.valid_password?(sign_in_params[:password])
       sign_in(:staff, staff)
-      redirect_to  root and return
+      redirect_to  tickets_path and return
     elsif staff && !staff.valid_password?(sign_in_params[:password])
       flash[:alert] = "The email and password you entered don't match."
       redirect_to  new_staff_session_path and return
